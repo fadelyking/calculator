@@ -26,6 +26,9 @@ body {
     display: flex;
     flex: 1;
     height: 100px;
+    padding-right: 20px;
+    justify-content: flex-end;
+    font-size: 90px;
     background-color: lightgrey;
     width: auto;
     border: 5px solid black;
