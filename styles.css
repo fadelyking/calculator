@@ -57,7 +57,7 @@
     background-color: rgb(0, 113, 247);
 }
 
-.first-row > .divide {
+.operator {
     background-color: orange;
 }
 
@@ -82,7 +82,7 @@
     background-color: hsl(180, 89%, 30%);
 }
 
-.second-row > .times {
+.operator {
     background-color: orange;
 }
 
@@ -107,7 +107,7 @@
     background-color: hsl(180, 89%, 30%);
 }
 
-.third-row > .minus {
+.operator {
     background-color: orange;
 }
 
@@ -134,7 +134,7 @@
     background-color: hsl(180, 89%, 30%);
 }
 
-.fourth-row > .plus {
+.operator {
     background-color: orange;
 }
 
@@ -160,10 +160,10 @@
     padding: 1;
 }
 
-.fifth-row > .zero {
+.fifth-row > #zero {
     flex: 2;
 }
 
-.fifth-row > .equal {
+.fifth-row > #equal {
     background-color: orange;
 }

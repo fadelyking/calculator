@@ -1,44 +1,67 @@
-let firstNum = [];
-let operation = "";
-let secondNum = [];
+let currentValue = "";
+let operator = "";
+let secondValue = "";
+document.addEventListener("DOMContentLoaded", function () {
+	let clear = document.querySelector(".ac");
+	let percent = document.querySelector(".percent");
+	let decimal = document.querySelector(".dot");
+	let plussubstract = document.querySelector(".plusdivide");
+	let currentScreen = document.querySelector(".display-container");
+	let numbers = document.querySelectorAll(".number");
+	let operators = document.querySelectorAll(".operator");
+	let equal = document.querySelector(".equal");
+	numbers.forEach((number) =>
+		number.addEventListener("click", function (e) {
+			handleNumber(e.target.textContent);
+			currentScreen.textContent = currentValue;
+		})
+	);
 
-const calculatorButtons = [
-	{ num: 0, loc: document.querySelector(".zero") },
-	{ num: 1, loc: document.querySelector(".one") },
-	{ num: 2, loc: document.querySelector(".two") },
-	{ num: 3, loc: document.querySelector(".three") },
-	{ num: 4, loc: document.querySelector(".four") },
-	{ num: 5, loc: document.querySelector(".five") },
-	{ num: 6, loc: document.querySelector(".six") },
-	{ num: 7, loc: document.querySelector(".seven") },
-	{ num: 8, loc: document.querySelector(".eight") },
-	{ num: 9, loc: document.querySelector(".nine") },
-	{ plus: document.querySelector(".plus") },
-	{ minus: document.querySelector(".minus") },
-	{ multiply: document.querySelector(".multiply") },
-	{ divide: document.querySelector(".divide") },
-];
+	operators.forEach((op) =>
+		op.addEventListener("click", function (e) {
+			handleOperator(e.target.textContent);
 
-const numbers = document.querySelector(".numbers");
-numbers.addEventListener("click", (e) => {
-	const getNumber = calculatorButtons.filter((item) => {
-		if (e.target === item.loc) {
-			firstNum.push(item.num);
-		}
-		const display = document.querySelector(".display-container");
-		display.textContent = `${firstNum.join("")}`;
+			currentScreen.textContent = secondValue + " " + operator;
+		})
+	);
+
+	clear.addEventListener("click", function () {
+		currentValue = "";
+		operator = "";
+		secondValue = "";
+		currentScreen.textContent = "";
+	});
+
+	equal.addEventListener("click", function () {
+		calc();
+
+		currentScreen.textContent = currentValue;
 	});
 });
 
-function add(input) {}
+function handleOperator(op) {
+	operator = op;
+	secondValue = currentValue;
+	currentValue = "";
+}
+function handleNumber(num) {
+	currentValue += num;
+}
 
-function subtract(input) {}
+function calc() {
+	secondValue = Number(secondValue);
+	currentValue = Number(currentValue);
 
-function multiply(input) {}
+	if (operator === "+") {
+		secondValue += currentValue;
+	} else if (operator === "-") {
+		secondValue -= currentValue;
+	} else if (operator === "*") {
+		secondValue *= currentValue;
+	} else {
+		secondValue /= currentValue;
+	}
 
-function divide(input) {}
-
-add();
-subtract();
-multiply();
-divide();
+	currentValue = secondValue.toString();
+	secondValue = secondValue.toString();
+}
